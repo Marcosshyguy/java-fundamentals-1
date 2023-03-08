@@ -1,5 +1,6 @@
 package org.lessons.java;
 
+import java.text.DecimalFormat;
 import java.util.Scanner;
 
 public class TrainTicket {
@@ -8,7 +9,7 @@ public class TrainTicket {
     va applicato uno sconto del 20% per i minorenni
     va applicato uno sconto del 40% per gli over 65
     Per chiedere informazioni all’utente sarà necessario usare la classe java.util.Scanner, come visto in classe stamattina.
-            Bonus: formattare il risultato con un numero limitato di decimali utilizzando la classe DecimalFormat*/
+    Bonus: formattare il risultato con un numero limitato di decimali utilizzando la classe DecimalFormat */
     public static void main(String[] args) {
         double ticketPricePerKm = 0.21;
         int minorDiscount = 20;
@@ -25,23 +26,26 @@ public class TrainTicket {
         km = Integer.parseInt(scan.nextLine());
 
         double ticketPrice = (double)km * ticketPricePerKm;
+
+        scan.close();
+
         double discountPrice;
+        double finalPrice;
+        DecimalFormat decimalConversion = new DecimalFormat("#.##");
 
 
     if (age < 18){
-        discountPrice = (ticketPrice * 100 ) / minorDiscount;
-        System.out.println("Your ticket price is: " + discountPrice + " ");
+        discountPrice = (ticketPrice * minorDiscount ) / 100;
+        finalPrice = ticketPrice - discountPrice;
+        String formattedPrice = decimalConversion.format(finalPrice);
+        System.out.println("Your ticket price is: " + formattedPrice + " $");
     } else if (age >= 65) {
-        discountPrice = (ticketPrice * 100 ) / seniorDiscount;
-        System.out.println("Your ticket price is: " + discountPrice + " $" );
+        discountPrice = (ticketPrice * seniorDiscount ) / 100;
+        finalPrice = ticketPrice - discountPrice;
+        String formattedPrice = decimalConversion.format(finalPrice);
+        System.out.println("Your ticket price is: " + formattedPrice + " $");
     }else {
         System.out.println("Your ticket price is: " + ticketPrice + " $");
     }
-
-
-        //System.out.println(ticketPrice);
-        //System.out.println(discountPrice);
-
-
     }
 }
