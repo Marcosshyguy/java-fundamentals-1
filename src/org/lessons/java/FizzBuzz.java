@@ -9,7 +9,7 @@ public class FizzBuzz {
         System.out.println("Insert a number between 1 and 1000: ");
         int random = Integer.parseInt(scan.nextLine());
 
-        if (random > 0 || random <= 1000){
+        if (random > 0 && random <= 1000){
             for (int i = 1; i <= random; i++){
                 if(i % 3 == 0 && i % 5 == 0){
                     System.out.println("FizzBuzz");
@@ -22,8 +22,9 @@ public class FizzBuzz {
                     }else {
                     System.out.println(i);
                 }
-
                 }
-            }
+            }else{
+            System.out.println("retry");
+        }
         }
     }
